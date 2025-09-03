@@ -13,10 +13,10 @@ env:
   BUILD_NUMBER: 1
   BUILD_VERSION: 1.0.0
   PYTHON_VERSION: 3.12.8
-  
-  # Alterado para uma versão mais estável do flet-cli
-  FLET_CLI_VERSION: 0.22.0
-  
+
+  # Alterado para a versão 0.26.0, que está disponível e é mais estável
+  FLET_CLI_VERSION: 0.26.0
+
   PYTHONUTF8: 1
   FLET_CLI_NO_RICH_OUTPUT: 1
   UV_NO_PROGRESS: 1
