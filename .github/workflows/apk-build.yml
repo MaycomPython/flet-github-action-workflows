@@ -17,6 +17,9 @@ env:
   PYTHONUTF8: 1
   FLET_CLI_NO_RICH_OUTPUT: 1
   UV_NO_PROGRESS: 1
+  
+  # Adicione esta variável para que o Flet aceite as licenças do Android SDK automaticamente
+  FLET_BUILD_ANDROIDS_ACCEPT_LICENSES: "true"
 
 jobs:
   build:
@@ -36,9 +39,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install flet-cli==$FLET_CLI_VERSION
 
-    # --- PASSO ADICIONADO AQUI ---
-    - name: Accept Android SDK Licenses
-      run: yes | flutter doctor --android-licenses
+    # O passo de aceitar licenças foi removido daqui
 
     - name: Flet Build APK
       run: |
