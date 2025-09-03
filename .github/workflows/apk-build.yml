@@ -14,8 +14,8 @@ env:
   BUILD_VERSION: 1.0.0
   PYTHON_VERSION: 3.12.8
 
-  # Alterado para a versão 0.26.0, que está disponível e é mais estável
-  FLET_CLI_VERSION: 0.26.0
+  # Pulando para a versão estável mais recente para obter correções de bugs
+  FLET_CLI_VERSION: 0.28.3
 
   PYTHONUTF8: 1
   FLET_CLI_NO_RICH_OUTPUT: 1
