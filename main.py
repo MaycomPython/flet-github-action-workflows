@@ -1,80 +1,77 @@
 import flet as ft
 
 def main(page: ft.Page):
-    # 1. CONFIGURAÇÃO DA PÁGINA
-    page.title = "App Responsivo Flet"
-    page.theme_mode = ft.ThemeMode.SYSTEM
-    page.theme = ft.Theme(color_scheme_seed="bluegrey")
-    page.dark_theme = ft.Theme(color_scheme_seed="bluegrey")
-    page.padding = 0
+    # 1. CONFIGURAÇÃO DA PÁGINA E TEMA MATERIAL DESIGN
+    page.title = "App de Boas-Vindas"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER # Centraliza o conteúdo verticalmente
+    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER # Centraliza horizontalmente
 
-    # 2. FUNÇÃO DO EVENTO DO BOTÃO
-    def enviar_click(e):
-        if user_input_field.value:
-            output_text.value = f"Olá, {user_input_field.value}!"
-            output_text.opacity = 1
-            user_input_field.value = ""
-            user_input_field.focus()
-            page.update()
+    # Aplicando um tema Material 3 bonito com base na cor Indigo
+    page.theme = ft.Theme(color_scheme_seed="indigo")
+    page.dark_theme = ft.Theme(color_scheme_seed="indigo")
+    page.theme_mode = ft.ThemeMode.SYSTEM # Respeita o tema claro/escuro do celular
 
-    # 3. DEFINIÇÃO DOS CONTROLES (WIDGETS)
-    output_text = ft.Text(
-        "Digite algo e clique em enviar...",
-        size=24,
-        weight=ft.FontWeight.BOLD,
-        text_align=ft.TextAlign.CENTER,
-        opacity=0.5,
-        animate_opacity=300
-    )
+    # 2. FUNÇÃO DO BOTÃO (LÓGICA DO APP)
+    def btn_click(e):
+        # Validação: verifica se o campo de texto não está vazio
+        if not txt_name.value:
+            txt_name.error_text = "Por favor, digite seu nome"
+            txt_name.focus() # Coloca o foco de volta no campo
+        else:
+            # Lógica de sucesso
+            name = txt_name.value
+            page.clean() # Limpa a tela
+            
+            # Cria a nova tela de boas-vindas
+            page.add(
+                ft.Column(
+                    [
+                        ft.Icon(ft.Icons.CELEBRATION, color=ft.colors.AMBER, size=80),
+                        ft.Text(f"Olá, {name}!", size=32, weight=ft.FontWeight.BOLD),
+                        ft.Text("Seja bem-vindo(a) ao Flet!", size=16, italic=True)
+                    ],
+                    horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+                    spacing=10
+                )
+            )
+        
+        page.update()
 
-    user_input_field = ft.TextField(
-        label="Qual o seu nome?",
-        hint_text="Ex: Maria",
+    # 3. CRIAÇÃO DOS WIDGETS (COMPONENTES VISUAIS)
+    txt_name = ft.TextField(
+        label="Seu nome",
+        hint_text="Como podemos te chamar?",
+        # Usando a forma mais segura de chamar ícones
+        prefix_icon=ft.Icons.PERSON_OUTLINE, 
         border=ft.InputBorder.OUTLINE,
-        border_radius=10,
-        # CORREÇÃO DEFINITIVA DOS ÍCONES
-        prefix_icon=ft.Icons.PERSON_ROUNDED,
-        on_submit=send_click,
+        border_radius=8
     )
 
-    send_button = ft.ElevatedButton(
-        text="Enviar",
-        # CORREÇÃO DEFINITIVA DOS ÍCONES
-        icon=ft.Icons.SEND_ROUNDED,
+    btn_hello = ft.ElevatedButton(
+        text="Dizer Olá!",
+        # Usando a forma mais segura de chamar ícones
+        icon=ft.Icons.WAVING_HAND,
         height=50,
-        on_click=send_click,
-    )
-    
-    # 4. MONTAGEM DO LAYOUT DO CONTEÚDO
-    layout_conteudo = ft.Container(
-        width=500,
-        # CORREÇÃO DEFINITIVA DA COR:
-        # Trocamos a função complexa por uma cor padrão e segura.
-        # "black12" é um preto com 12% de opacidade, um fundo sutil.
-        bgcolor="black12",
-        border_radius=15,
-        padding=30,
-        content=ft.Column(
-            controls=[
-                output_text,
-                ft.Container(height=20),
-                user_input_field,
-                send_button,
-            ],
-            horizontal_alignment=ft.CrossAxisAlignment.CENTER,
-            spacing=15
-        )
+        on_click=btn_click,
     )
 
-    # 5. CRIAÇÃO DO "PALCO" PRINCIPAL QUE OCUPA A TELA INTEIRA
-    main_container = ft.Container(
-        content=layout_conteudo,
-        expand=True,
-        alignment=ft.alignment.center
+    # 4. MONTAGEM DO LAYOUT RESPONSIVO
+    # Usamos uma Coluna com largura máxima para o conteúdo não esticar demais em telas grandes
+    layout = ft.Column(
+        width=400, # Largura máxima do conteúdo
+        controls=[
+            ft.Text("Vamos começar", size=24, weight=ft.FontWeight.BOLD),
+            ft.Text("Este é um app de exemplo construído de forma robusta para rodar no Android.", text_align=ft.TextAlign.CENTER),
+            ft.Container(height=20), # Espaçamento
+            txt_name,
+            btn_hello
+        ],
+        horizontal_alignment=ft.CrossAxisAlignment.CENTER,
+        spacing=15
     )
 
-    # 6. ADICIONA O PALCO PRINCIPAL À PÁGINA
-    page.add(main_container)
+    # Adiciona o layout à página
+    page.add(layout)
     page.update()
 
 # Inicia o app
