@@ -1,5 +1,5 @@
 import flet as ft
-from flet import colors
+# A importação "from flet import colors" foi REMOVIDA.
 
 def main(page: ft.Page):
     # 1. CONFIGURAÇÃO DA PÁGINA
@@ -52,11 +52,10 @@ def main(page: ft.Page):
     )
     
     # 4. MONTAGEM DO LAYOUT RESPONSIVO
-    # Usamos um Container para limitar a largura em telas grandes (desktops)
-    # e permitir que ele encolha em telas pequenas (celulares).
     layout_responsivo = ft.Container(
         width=500, # Largura máxima
-        bgcolor=colors.with_opacity(0.05, colors.ON_SURFACE), # Cor de fundo sutil
+        # CORREÇÃO APLICADA AQUI:
+        bgcolor=ft.colors.with_opacity(0.05, ft.colors.ON_SURFACE), # Cor de fundo sutil
         border_radius=15,
         padding=30,
         content=ft.Column(
