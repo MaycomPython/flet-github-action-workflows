@@ -1,5 +1,5 @@
 import flet as ft
-from flet import icons # <-- A IMPORTAÇÃO CORRETA E EXPLÍCITA
+from flet import Icons # <-- A IMPORTAÇÃO CORRETA, CONFORME SUGERIDO PELO ERRO
 
 def main(page: ft.Page):
     # 1. CONFIGURAÇÃO DA PÁGINA
@@ -33,15 +33,15 @@ def main(page: ft.Page):
         hint_text="Ex: Maria",
         border=ft.InputBorder.OUTLINE,
         border_radius=10,
-        # CORREÇÃO DEFINITIVA: Usando 'icons' diretamente
-        prefix_icon=icons.PERSON_ROUNDED,
+        # CORREÇÃO FINAL: Usando 'Icons' (maiúsculo) que importamos
+        prefix_icon=Icons.PERSON_ROUNDED,
         on_submit=enviar_click,
     )
 
     send_button = ft.ElevatedButton(
         text="Enviar",
-        # CORREÇÃO DEFINITIVA: Usando 'icons' diretamente
-        icon=icons.SEND_ROUNDED,
+        # CORREÇÃO FINAL: Usando 'Icons' (maiúsculo) que importamos
+        icon=Icons.SEND_ROUNDED,
         height=50,
         on_click=enviar_click,
     )
