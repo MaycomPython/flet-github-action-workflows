@@ -1,0 +1,5 @@
+# flet.yml
+apk:
+  android:
+    compile-sdk: 34
+    target-sdk: 34
