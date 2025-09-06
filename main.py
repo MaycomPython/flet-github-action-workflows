@@ -1,13 +1,15 @@
 import flet as ft
 
 def main(page: ft.Page):
-    # 1. CONFIGURAÇÃO DA PÁGINA E TEMA MATERIAL DESIGN
+    # 1. CONFIGURAÇÃO DA PÁGINA COM TEMA DINÂMICO (MATERIAL YOU)
     page.title = "App de Boas-Vindas"
     page.vertical_alignment = ft.MainAxisAlignment.CENTER
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
 
-    page.theme = ft.Theme(color_scheme_seed="indigo")
-    page.dark_theme = ft.Theme(color_scheme_seed="indigo")
+    # Ativando o Material You (ou o fallback azul padrão)
+    page.theme = ft.Theme()
+    page.dark_theme = ft.Theme()
+    
     page.theme_mode = ft.ThemeMode.SYSTEM
 
     # 2. FUNÇÃO DO BOTÃO (LÓGICA DO APP)
@@ -22,9 +24,9 @@ def main(page: ft.Page):
             page.add(
                 ft.Column(
                     [
-                        # CORREÇÃO APLICADA AQUI:
-                        # Trocamos ft.colors.AMBER pela string "amber", que é mais segura.
-                        ft.Icon(ft.Icons.CELEBRATION, color="amber", size=80),
+                        # CORREÇÃO IDIOMÁTICA FINAL APLICADA AQUI:
+                        # Referenciamos a cor do tema pelo seu nome como uma string.
+                        ft.Icon(ft.Icons.CELEBRATION, color="primary", size=80),
                         
                         ft.Text(f"Olá, {name}!", size=32, weight=ft.FontWeight.BOLD),
                         ft.Text("Seja bem-vindo(a) ao Flet!", size=16, italic=True)
