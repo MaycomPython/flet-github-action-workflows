@@ -3,3 +3,4 @@ apk:
   android:
     compile-sdk: 34
     target-sdk: 34
+    material-you: true # <--- ESTA É A LINHA MÁGICA QUE FALTAVA
