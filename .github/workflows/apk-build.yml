@@ -42,7 +42,7 @@ jobs:
 
     - name: Flet Build APK
       run: |
-        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION --android-compile-sdk 34 --android-target-sdk 34
+        flet build apk --verbose --build-number=$BUILD_NUMBER --build-version=$BUILD_VERSION
 
     - name: Upload APK Artifact
       uses: actions/upload-artifact@v4.3.4
