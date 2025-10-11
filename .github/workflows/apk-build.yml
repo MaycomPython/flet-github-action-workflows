@@ -28,11 +28,11 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install specific flet-cli version
+    - name: Install Latest Flet CLI (including pre-release)
       run: |
         python -m pip install --upgrade pip
-        # Força a instalação de uma versão recente que usa um Flutter SDK compatível
-        pip install flet-cli==0.30.2
+        # Usa --pre para permitir a instalação de versões de desenvolvimento, que contêm as correções mais recentes.
+        pip install --upgrade --pre flet-cli
 
     - name: Accept Android licenses
       run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
