@@ -10,14 +10,9 @@ on:
   workflow_dispatch:
 
 env:
-  # https://flet.dev/docs/publish#versioning
   BUILD_NUMBER: 1
   BUILD_VERSION: 1.0.0
-
-  # Python version to use
-  PYTHON_VERSION: 3.12 # Não precisa do patch version (ex: .8)
-
-  # Garante o uso de UTF-8
+  PYTHON_VERSION: 3.12
   PYTHONUTF8: 1
 
 jobs:
@@ -33,14 +28,15 @@ jobs:
       with:
         python-version: ${{ env.PYTHON_VERSION }}
 
-    - name: Install flet-cli (latest version)
+    - name: Install and Upgrade flet-cli
       run: |
         python -m pip install --upgrade pip
-        pip install flet-cli
+        pip install --upgrade flet-cli
 
-    # PASSO ADICIONAL PARA ACEITAR LICENÇAS
     - name: Accept Android licenses
-      run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses
+      # Este comando pode não ser necessário nas versões mais recentes do runner,
+      # mas não custa mantê-lo para garantir a compatibilidade.
+      run: yes | /usr/local/lib/android/sdk/cmdline-tools/latest/bin/sdkmanager --licenses || true
 
     - name: Flet Build APK
       run: |
