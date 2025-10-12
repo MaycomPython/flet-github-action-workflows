@@ -88,13 +88,13 @@ def main(page: ft.Page):
     email_login = ft.TextField(
         label="Email", 
         hint_text="Digite seu email",
-        prefix_icon=ft.icons.EMAIL,
+        prefix_icon="email",  # ALTERADO
         border_radius=10
     )
     senha_login = ft.TextField(
         label="Senha", 
         hint_text="Digite sua senha",
-        prefix_icon=ft.icons.LOCK,
+        prefix_icon="lock",  # ALTERADO
         password=True, 
         can_reveal_password=True,
         border_radius=10
@@ -104,7 +104,7 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         spacing=20,
         controls=[
-            ft.Icon(name=ft.icons.LOCK_PERSON, size=80),
+            ft.Icon(name="lock_person", size=80),  # ALTERADO
             ft.Text("Bem-vindo de Volta!", size=32, weight=ft.FontWeight.BOLD),
             email_login,
             senha_login,
@@ -129,19 +129,19 @@ def main(page: ft.Page):
     nome_register = ft.TextField(
         label="Nome Completo", 
         hint_text="Digite seu nome",
-        prefix_icon=ft.icons.PERSON,
+        prefix_icon="person",  # ALTERADO
         border_radius=10
     )
     email_register = ft.TextField(
         label="Email",
         hint_text="Digite um email válido",
-        prefix_icon=ft.icons.EMAIL,
+        prefix_icon="email",  # ALTERADO
         border_radius=10
     )
     senha_register = ft.TextField(
         label="Crie uma Senha",
         hint_text="Digite sua nova senha",
-        prefix_icon=ft.icons.LOCK,
+        prefix_icon="lock",  # ALTERADO
         password=True,
         can_reveal_password=True,
         border_radius=10
@@ -152,7 +152,7 @@ def main(page: ft.Page):
         horizontal_alignment=ft.CrossAxisAlignment.CENTER,
         spacing=20,
         controls=[
-            ft.Icon(name=ft.icons.PERSON_ADD, size=80),
+            ft.Icon(name="person_add", size=80),  # ALTERADO
             ft.Text("Crie sua Conta", size=32, weight=ft.FontWeight.BOLD),
             nome_register,
             email_register,
